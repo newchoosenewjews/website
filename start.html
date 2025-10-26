@@ -137,22 +137,36 @@
 </head>
 <body>
   <!-- Header -->
-  <header class="header">
-    <div class="container nav">
-      <a class="brand" href="./index.html">
-        <img src="logo.png" alt="NCNJ logo" />
-        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
-      </a>
-      <nav class="menu" aria-label="Primary Navigation">
-        <a href="./index.html#home">Home</a>
-        <a href="#">Start</a>
-        <a href="./index.html#resources">Resources</a>
-        <a href="./index.html#shop">Shop</a>
-        <a href="./index.html#consult">1:1 Consult</a>
-        <a href="./index.html#contact" class="cta">Contact</a>
-      </nav>
-    </div>
-  </header>
+  <header class="header" role="banner">
+  <div class="container nav">
+    <a class="brand" href="./index.html" aria-label="New Choose New Jews Home">
+      <picture>
+        <source type="image/webp" srcset="
+          ./assets/brand/ncnj-logo-horizontal-w640.webp 640w,
+          ./assets/brand/ncnj-logo-horizontal-w320.webp 320w,
+          ./assets/brand/ncnj-logo-horizontal-w160.webp 160w,
+          ./assets/brand/ncnj-logo-horizontal.webp 1024w">
+        <img
+          src="./assets/brand/ncnj-logo-horizontal.png"
+          alt="New Choose New Jews logo"
+          height="40"
+          style="height:40px;width:auto">
+      </picture>
+      <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+    </a>
+
+    <nav class="menu" aria-label="Primary Navigation">
+      <a href="./index.html#home">Home</a>
+      <a href="./start.html">Start</a>
+      <a href="./resources.html">Resources</a>
+      <a href="./shop.html">Shop</a>
+      <a href="./consultation.html">1:1 Consult</a>
+      <a href="./members.html" class="cta">Members</a>
+      <a href="./index.html#contact" class="cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
 
   <!-- Hero -->
   <section class="hero section hero-alt" id="start-hero">
