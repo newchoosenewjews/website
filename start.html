@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start — New Choose New Jews</title>
+  <style>
+    :root{
+      --primary:#1437ff;   /* brand blue */
+      --accent:#ffd500;    /* brand yellow */
+      --text:#0f172a;
+      --muted:#475569;
+      --soft:#f6f7fb;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:20px;
+      --radius-sm:12px;
+      --container:1100px;
+      --gradient: linear-gradient(135deg, #eef2ff 0%, #f7f8ff 100%);
+      --btn-gradient: linear-gradient(45deg, var(--primary), #3b57ff);
+    }
+    *{margin:0; padding:0; box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:var(--white); line-height:1.6}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+    .section{padding:92px 20px}
+
+    /* Header (matches landing) */
+    .header{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid #eef0f5; box-shadow:0 6px 20px rgba(20,55,255,0.05)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none}
+    .brand img{height:40px}
+    .brand-title{font-weight:800; letter-spacing:0.4px; color:var(--primary)}
+    .menu{display:flex; gap:24px; align-items:center}
+    .menu a{color:#334155; text-decoration:none; font-weight:500}
+    .menu a:hover{color:var(--primary)}
+    .cta{padding:10px 16px; background:var(--btn-gradient); color:#fff !important; border-radius:999px; box-shadow:0 8px 22px rgba(20,55,255,0.25)}
+
+    /* Hero */
+    .hero{background:var(--gradient)}
+    .grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:64px; align-items:center}
+    .kicker{font-size:.9rem; font-weight:700; letter-spacing:2px; color:var(--primary); text-transform:uppercase}
+    h1{font-size:3rem; line-height:1.1; font-weight:300; margin:12px 0 12px}
+    .subtitle{font-size:1.12rem; color:var(--muted); max-width:60ch}
+    .accent-line{width:72px; height:5px; background:linear-gradient(90deg, var(--accent), var(--primary)); border-radius:6px; margin:20px 0}
+    .btn{display:inline-block; padding:14px 28px; background:var(--btn-gradient); color:#fff; text-decoration:none; border-radius:999px; font-weight:600; box-shadow:0 10px 28px rgba(20,55,255,0.25); transition:transform .25s ease, box-shadow .25s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(20,55,255,0.32)}
+
+    .mock{position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.10)}
+    .mock img{height:520px; width:100%; object-fit:cover}
+
+    /* Steps */
+    .steps .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:26px}
+    .step{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:26px}
+    .step h3{font-size:1.15rem; margin:8px 0 6px}
+    .step p{color:var(--muted)}
+    .num{width:40px; height:40px; border-radius:10px; background:linear-gradient(135deg, var(--accent), #ffe55b); display:grid; place-items:center; font-weight:800; color:#1f2937}
+
+    /* Checklist */
+    .checklist{background:var(--soft); border-radius:18px; padding:24px; box-shadow:var(--shadow)}
+    .checklist ul{display:grid; grid-template-columns:1fr 1fr; gap:10px 24px; list-style:none}
+    .checklist li::before{content:"✔"; color:var(--primary); margin-right:10px}
+
+    /* Quiz */
+    .quiz{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+    .card{background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:24px}
+    .card h3{margin-bottom:8px}
+    .field{margin:12px 0}
+    .field label{display:block; font-weight:600; margin-bottom:6px}
+    .field input[type="text"], .field select, .field textarea{width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px}
+    .options{display:grid; gap:8px}
+    .options label{display:flex; gap:10px; align-items:center}
+
+    .result{display:none; margin-top:12px; background:var(--soft); border-left:6px solid var(--primary); padding:16px; border-radius:10px}
+    .result h4{margin-bottom:6px}
+
+    /* Reading list */
+    .reads{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    .read{background:#fff; border-radius:14px; box-shadow:var(--shadow); padding:18px}
+    .read h4{margin-bottom:6px}
+    .read p{color:var(--muted)}
+
+    /* FAQ */
+    .faq .item{background:#fff; border-radius:14px; box-shadow:var(--shadow); margin-bottom:12px; overflow:hidden}
+    .faq summary{cursor:pointer; padding:18px 20px; font-weight:600}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq .body{padding:0 20px 18px; color:var(--muted)}
+
+    /* Footer CTA */
+    .cta-block{background:linear-gradient(135deg, rgba(20,55,255,0.06) 0%, rgba(20,55,255,0.02) 100%); border-radius:18px; padding:28px; text-align:center; box-shadow:var(--shadow)}
+
+    /* Animations */
+    .fade-in{opacity:0; transform:translateY(26px); transition:all .7s ease}
+    .fade-in.visible{opacity:1; transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid, .quiz{grid-template-columns:1fr}
+      .steps .cards{grid-template-columns:1fr}
+      .reads{grid-template-columns:1fr}
+      h1{font-size:2.2rem}
+      .brand img{height:34px}
+      .cta{display:none}
+      .checklist ul{grid-template-columns:1fr}
+    }
+      /* Hero Alt (distinct from home) */
+    .hero-alt{background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(20,55,255,0.08), transparent 60%),
+      radial-gradient(900px 500px at 110% 10%, rgba(255,213,0,0.12), transparent 60%),
+      var(--white);
+    }
+    .hero-wrap{display:grid; grid-template-columns:1.2fr 0.8fr; gap:48px; align-items:center}
+    .hero-card{background:#fff; border-radius:24px; padding:28px; box-shadow:0 20px 70px rgba(17,24,39,0.08); border:1px solid #eef0f5}
+    .hero-card h1{font-size:3rem; line-height:1.08; font-weight:300; margin:12px 0 10px}
+    .chips{display:flex; flex-wrap:wrap; gap:10px; margin:14px 0}
+    .chip{padding:8px 12px; border-radius:999px; background:#f1f5ff; color:#1e3a8a; font-weight:600; font-size:.82rem; border:1px solid #e0e7ff}
+    .cta-row{display:flex; gap:14px; align-items:center; margin-top:8px}
+    .link{font-weight:700; color:#334155; text-decoration:none}
+    .link:hover{color:var(--primary)}
+    .mini-list{margin:18px 0 0 0; padding-left:0; list-style:none; color:var(--muted)}
+    .mini-list li{display:flex; gap:8px; align-items:flex-start; margin:6px 0}
+    .mini-list li span{font-weight:700; color:var(--primary)}
+    .hero-visual{position:relative; width:100%; height:520px; border-radius:28px; overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.10); background:
+      radial-gradient(260px 260px at 65% 40%, rgba(20,55,255,0.15), transparent 60%),
+      radial-gradient(220px 220px at 35% 70%, rgba(255,213,0,0.18), transparent 60%),
+      linear-gradient(135deg, #eef2ff, #ffffff);
+    }
+    .hero-visual::after{content:""; position:absolute; inset:20px; border-radius:24px; border:1px solid #e5e7eb; box-shadow:inset 0 1px 0 rgba(255,255,255,0.6)}
+
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns:1fr; gap:26px}
+      .hero-visual{height:360px}
+      .hero-card h1{font-size:2.2rem}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="./index.html">
+        <img src="logo.png" alt="NCNJ logo" />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="#">Start</a>
+        <a href="./index.html#resources">Resources</a>
+        <a href="./index.html#shop">Shop</a>
+        <a href="./index.html#consult">1:1 Consult</a>
+        <a href="./index.html#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero section hero-alt" id="start-hero">
+    <div class="container hero-wrap">
+      <div class="hero-card fade-in">
+        <span class="kicker">Start here</span>
+        <h1>Begin your journey with a calm, beautiful plan</h1>
+        <p class="subtitle">A welcoming orientation page with a gentle quiz, a two‑week starter track, and clear next steps—so you move forward without overwhelm.</p>
+        <div class="chips" aria-label="Highlights">
+          <span class="chip">Clarity</span>
+          <span class="chip">Kind guidance</span>
+          <span class="chip">Realistic pace</span>
+        </div>
+        <div class="accent-line" aria-hidden="true"></div>
+        <div class="cta-row">
+          <a class="btn" href="#quiz">Take the starter quiz</a>
+          <a class="link" href="#how">See how it works</a>
+        </div>
+        <ul class="mini-list" style="margin-top:14px">
+          <li><span>✓</span> Short self‑check to clarify your motivations.</li>
+          <li><span>✓</span> Tailored reading plan you can start this week.</li>
+          <li><span>✓</span> Options: self‑study, community, or 1:1 consult.</li>
+        </ul>
+      </div>
+      <div class="hero-visual fade-in" aria-hidden="true">
+        <!-- Decorative SVG illustration (placeholder) -->
+        <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23ffffff'/%3E%3Cstop offset='1' stop-color='%23eef2ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='900' height='520' fill='url(%23g)'/%3E%3Ccircle cx='650' cy='160' r='80' fill='%23ffd500'/%3E%3Ccircle cx='340' cy='340' r='70' fill='%231437ff' fill-opacity='.18'/%3E%3Crect x='220' y='120' width='280' height='200' rx='20' fill='%23ffffff' stroke='%23e5e7eb'/%3E%3Crect x='250' y='160' width='140' height='12' rx='6' fill='%231437ff'/%3E%3Crect x='250' y='185' width='200' height='8' rx='4' fill='%23c7d2fe'/%3E%3Crect x='250' y='205' width='170' height='8' rx='4' fill='%23c7d2fe'/%3E%3Crect x='250' y='225' width='190' height='8' rx='4' fill='%23c7d2fe'/%3E%3C/svg%3E" style="width:100%; height:100%; object-fit:cover"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section steps">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom:30px">
+        <h2>How it works</h2>
+        <p class="subtitle">A three‑step orientation to avoid confusion and get moving</p>
+      </div>
+      <div class="cards">
+        <div class="step fade-in">
+          <div class="num">1</div>
+          <h3>Quick self‑check</h3>
+          <p>Clarify motivations, expectations, and what “commitment” looks like in practice.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="num">2</div>
+          <h3>Starter quiz</h3>
+          <p>Short questions that tailor your first learning path and recommended reading.</p>
+        </div>
+        <div class="step fade-in">
+          <div class="num">3</div>
+          <h3>Choose a next step</h3>
+          <p>Begin self‑study, join the community, or book a focused 1:1 consultation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checklist -->
+  <section class="section">
+    <div class="container">
+      <div class="checklist fade-in">
+        <h3 style="margin-bottom:10px">Is conversion the right path for me right now?</h3>
+        <p class="subtitle" style="margin-bottom:14px">Common signs you’re ready to start:</p>
+        <ul>
+          <li>You feel a sustained connection to Judaism (not just a recent interest).</li>
+          <li>You’re open to consistent learning and community participation.</li>
+          <li>Your motivation goes beyond marriage/administrative needs.</li>
+          <li>You want clarity on movements (Orthodox, Conservative, Reform) and requirements.</li>
+          <li>You’re willing to ask questions and receive guidance.</li>
+          <li>You can dedicate 2–5 hours a week to study and practice.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz" class="section" style="background:var(--soft)">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom:24px">
+        <h2>Starter quiz</h2>
+        <p class="subtitle">Answer and get a personalized suggestion below</p>
+      </div>
+      <div class="quiz">
+        <form id="startForm" class="card">
+          <h3>Tell us a bit about you</h3>
+          <div class="field">
+            <label>What best describes your familiarity with Judaism?</label>
+            <div class="options">
+              <label><input type="radio" name="fam" value="new" required> Totally new</label>
+              <label><input type="radio" name="fam" value="some"> I know some basics</label>
+              <label><input type="radio" name="fam" value="solid"> I’ve been studying regularly</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Which movement are you leaning toward?</label>
+            <select name="movement" required>
+              <option value="">Select one</option>
+              <option>Orthodox</option>
+              <option>Conservative</option>
+              <option>Reform</option>
+              <option>Undecided</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Weekly time you can dedicate</label>
+            <select name="hours" required>
+              <option value="">Select one</option>
+              <option value="lt2">Less than 2 hours</option>
+              <option value="2-4">2–4 hours</option>
+              <option value="5+">5+ hours</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Main goal for the next 90 days</label>
+            <div class="options">
+              <label><input type="radio" name="goal" value="foundation" required> Build a consistent learning foundation</label>
+              <label><input type="radio" name="goal" value="community"> Get involved with a local community</label>
+              <label><input type="radio" name="goal" value="meet"> Speak with a rabbi and plan a path</label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Anything else we should know? (optional)</label>
+            <textarea name="notes" rows="4" placeholder="Language needs, location, previous study…"></textarea>
+          </div>
+          <button class="btn" type="submit">See my suggestion</button>
+          <div id="result" class="result" role="status" aria-live="polite"></div>
+        </form>
+
+        <aside class="card">
+          <h3>What you’ll get</h3>
+          <ul style="margin-left:18px">
+            <li>A concise recommendation based on your inputs.</li>
+            <li>A mini reading plan (3–5 items) to start this week.</li>
+            <li>Clear next steps (self‑study, community, or 1:1).</li>
+          </ul>
+          <div style="height:14px"></div>
+          <h3>Tip</h3>
+          <p class="subtitle">If you’re undecided about movements, your plan will prioritize fundamentals that apply everywhere.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reading list (starter) -->
+  <section class="section">
+    <div class="container">
+      <div class="fade-in" style="text-align:center; margin-bottom:24px">
+        <h2>Starter reading list</h2>
+        <p class="subtitle">A gentle beginning you can complete in 2–3 weeks</p>
+      </div>
+      <div class="reads">
+        <div class="read fade-in">
+          <h4>Jewish calendar & Shabbat overview</h4>
+          <p>Understand rhythms, basic terms, and why time matters in practice.</p>
+        </div>
+        <div class="read fade-in">
+          <h4>Prayer basics</h4>
+          <p>Structure of daily/weekly prayer, siddur navigation, and common blessings.</p>
+        </div>
+        <div class="read fade-in">
+          <h4>Intro to Torah study</h4>
+          <p>Parashah cycle, how to read commentaries, and simple weekly habits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" style="background:var(--soft)">
+    <div class="container faq">
+      <div class="fade-in" style="text-align:center; margin-bottom:18px">
+        <h2>FAQs</h2>
+        <p class="subtitle">Short answers to common questions</p>
+      </div>
+
+      <details class="item fade-in">
+        <summary>Is this meeting suitable for me?</summary>
+        <div class="body">It’s ideal if you're unsure whether conversion is right for you—or if you've committed but don’t know how to begin. It’s not intended for those already in the final stages of conversion or preparing for a rabbinical court.</div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>What does the meeting include?</summary>
+        <div class="body">
+          <ul style="margin-left:18px">
+            <li>A step‑by‑step walkthrough of the conversion process: how to start, what comes next, and what to expect at each stage.</li>
+            <li>Explanation of different types of conversion in Judaism and how they vary.</li>
+            <li>Guidance on budgeting and what to consider financially.</li>
+            <li>Information about conversions recognized by the State of Israel and their implications.</li>
+            <li>Time for your own questions.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>How long is the meeting?</summary>
+        <div class="body">45 minutes.</div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>How much does it cost?</summary>
+        <div class="body">USD 35.</div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>What will I receive at the end?</summary>
+        <div class="body">
+          <ul style="margin-left:18px">
+            <li>Help connecting with a rabbi or conversion program.</li>
+            <li>Ongoing support via WhatsApp/email for questions that arise during your journey.</li>
+            <li>A <strong>14% discount</strong> on all books in the store.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>What is the rescheduling/cancellation policy?</summary>
+        <div class="body">
+          <ul style="margin-left:18px">
+            <li>Cancel without penalty if done at least <strong>48 hours in advance</strong>.</li>
+            <li>Cancellations made within 48 hours are fully charged.</li>
+            <li>You can reschedule up to 48 hours before the appointment.</li>
+            <li>If we must cancel less than 48 hours before, you’ll receive a full refund.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="item fade-in">
+        <summary>Additional notes</summary>
+        <div class="body">
+          <ul style="margin-left:18px">
+            <li>The presentation is not sent afterward due to copyright.</li>
+            <li>Appointments cannot be scheduled more than one month in advance.</li>
+            <li>If you have questions before booking, email <a href="mailto:customerservice@newchoosenewjews.com">customerservice@newchoosenewjews.com</a>.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="section">
+    <div class="container cta-block fade-in">
+      <h3>Want a focused plan made for you?</h3>
+      <p class="subtitle">Book a 30‑minute consultation to map your first 90 days clearly.</p>
+      <div style="height:10px"></div>
+      <a class="btn" href="./index.html#consult">Book a 1:1 call</a>
+    </div>
+  </section>
+
+  <script>
+    // Fade-in observer
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+    // Simple suggestion engine
+    const form = document.getElementById('startForm');
+    const out = document.getElementById('result');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const fam = data.get('fam');
+      const mov = data.get('movement') || 'Undecided';
+      const hours = data.get('hours');
+      const goal = data.get('goal');
+
+      // Build suggestion
+      let title = 'Your suggested next step';
+      let bullets = [];
+
+      if(fam === 'new'){
+        bullets.push('Start with a 2‑week foundations track: calendar, Shabbat overview, prayer structure.');
+      } else if(fam === 'some'){
+        bullets.push('Begin a 4‑week track: weekly parashah + basic blessings + one community activity.');
+      } else {
+        bullets.push('Adopt a 6‑week track: parashah + commentary, siddur navigation, and regular community involvement.');
+      }
+
+      if(hours === 'lt2') bullets.push('Commit to 20–30 minutes per day, 4–5 days/week.');
+      if(hours === '2-4') bullets.push('Aim for three 45‑minute sessions + one longer block on weekends.');
+      if(hours === '5+') bullets.push('Plan 4 study sessions + one community event weekly.');
+
+      if(goal === 'foundation') bullets.push('Focus on routines; track progress weekly.');
+      if(goal === 'community') bullets.push('Visit two local communities this month; note differences and questions.');
+      if(goal === 'meet') bullets.push('Prepare a short bio + questions list for a rabbinic conversation.');
+
+      bullets.push(`Current movement: ${mov}. If undecided, keep foundations universal for now.`);
+
+      out.innerHTML = `<h4>${title}</h4><ul style="margin-left:18px">${bullets.map(b=>`<li>${b}</li>`).join('')}</ul>`;
+      out.style.display = 'block';
+      out.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  </script>
+</body>
+</html>
