@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources — New Choose New Jews</title>
+  <style>
+    :root{
+      --primary:#1437ff;   /* brand blue */
+      --accent:#ffd500;    /* brand yellow */
+      --text:#0f172a;
+      --muted:#475569;
+      --soft:#f6f7fb;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:20px;
+      --radius-sm:12px;
+      --container:1100px;
+      --gradient: linear-gradient(135deg, #eef2ff 0%, #f7f8ff 100%);
+      --btn-gradient: linear-gradient(45deg, var(--primary), #3b57ff);
+    }
+    *{margin:0; padding:0; box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:var(--white); line-height:1.6}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+    .section{padding:92px 20px}
+
+    /* Header (match site) */
+    .header{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid #eef0f5; box-shadow:0 6px 20px rgba(20,55,255,0.05)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none}
+    .brand img{height:40px}
+    .brand-title{font-weight:800; letter-spacing:0.4px; color:var(--primary)}
+    .menu{display:flex; gap:24px; align-items:center}
+    .menu a{color:#334155; text-decoration:none; font-weight:500}
+    .menu a:hover{color:var(--primary)}
+    .cta{padding:10px 16px; background:var(--btn-gradient); color:#fff !important; border-radius:999px; box-shadow:0 8px 22px rgba(20,55,255,0.25)}
+
+    /* Hero banner */
+    .hero{background:radial-gradient(900px 500px at 10% 0%, rgba(20,55,255,0.10), transparent 60%),
+                   radial-gradient(900px 500px at 110% 10%, rgba(255,213,0,0.12), transparent 60%),
+                   var(--white)}
+    .hero-wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center}
+    .kicker{font-size:.9rem; font-weight:800; letter-spacing:2px; color:var(--primary); text-transform:uppercase}
+    h1{font-size:3rem; line-height:1.08; font-weight:300; margin:12px 0 10px}
+    .subtitle{font-size:1.1rem; color:var(--muted); max-width:62ch}
+    .accent-line{width:72px; height:5px; background:linear-gradient(90deg, var(--accent), var(--primary)); border-radius:6px; margin:20px 0}
+    .btn{display:inline-block; padding:12px 22px; background:var(--btn-gradient); color:#fff; text-decoration:none; border-radius:999px; font-weight:700; box-shadow:0 10px 28px rgba(20,55,255,0.25); transition:transform .25s ease, box-shadow .25s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(20,55,255,0.32)}
+    .pill{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:#f1f5ff; border:1px solid #e0e7ff; color:#1e3a8a; font-weight:700; font-size:.82rem}
+
+    .hero-card{background:#fff; border:1px solid #eef0f5; border-radius:20px; padding:18px; box-shadow:var(--shadow)}
+    .hero-card h3{font-size:1.05rem; margin-bottom:6px}
+    .hero-card ul{list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:8px 14px}
+    .hero-card li{font-size:.95rem; color:var(--muted)}
+
+    /* Layout */
+    .wrap{display:grid; grid-template-columns:280px 1fr; gap:28px}
+    .sidebar{position:sticky; top:92px; height:fit-content}
+    .panel{background:#fff; border:1px solid #eef0f5; border-radius:14px; box-shadow:var(--shadow); padding:16px}
+    .panel h3{font-size:1rem; margin-bottom:8px}
+
+    .search{display:flex; gap:8px}
+    .search input{flex:1; padding:12px 14px; border:1px solid #e5e7eb; border-radius:999px}
+    .search button{padding:12px 16px; border-radius:999px; border:0; background:var(--btn-gradient); color:#fff; font-weight:700}
+
+    .filters .group{margin-top:14px}
+    .filters label{display:flex; align-items:center; gap:8px; font-size:.95rem; color:#334155; margin:6px 0}
+
+    /* Cards */
+    .grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px}
+    .card{background:#fff; border-radius:16px; border:1px solid #eef0f5; box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column}
+    .thumb{height:160px; background:#eef2ff}
+    .meta{display:flex; align-items:center; gap:8px; font-size:.8rem; color:#64748b; margin-top:8px}
+    .tag{padding:4px 10px; border-radius:999px; background:#f1f5ff; border:1px solid #e0e7ff; color:#1e3a8a; font-weight:700; font-size:.72rem}
+    .body{padding:16px}
+    .body h3{font-size:1.1rem; margin-bottom:6px}
+    .body p{color:var(--muted); font-size:.98rem}
+    .card a.more{margin:12px 16px 16px; align-self:flex-start}
+
+    /* Newsletter / downloads */
+    .cta-block{background:linear-gradient(135deg, rgba(20,55,255,0.06) 0%, rgba(20,55,255,0.02) 100%); border-radius:18px; padding:24px; text-align:center; box-shadow:var(--shadow)}
+
+    /* Pagination */
+    .pagination{display:flex; gap:8px; align-items:center; justify-content:center; margin-top:18px}
+    .pagination a{padding:10px 14px; border-radius:10px; border:1px solid #e5e7eb; text-decoration:none; color:#334155}
+    .pagination a.active{border-color:var(--primary); color:var(--primary); font-weight:800}
+
+    /* Animations */
+    .fade-in{opacity:0; transform:translateY(26px); transition:all .7s ease}
+    .fade-in.visible{opacity:1; transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 1100px){ .grid{grid-template-columns:repeat(2, 1fr)} }
+    @media (max-width: 880px){
+      .hero-wrap{grid-template-columns:1fr}
+      .wrap{grid-template-columns:1fr}
+      .grid{grid-template-columns:1fr}
+      h1{font-size:2.2rem}
+      .hero-card ul{grid-template-columns:1fr}
+      .brand img{height:34px}
+      .cta{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="./index.html">
+        <img src="logo.png" alt="NCNJ logo" />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="./start.html">Start</a>
+        <a href="#">Resources</a>
+        <a href="./index.html#shop">Shop</a>
+        <a href="./index.html#consult">1:1 Consult</a>
+        <a href="./index.html#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero section">
+    <div class="container hero-wrap">
+      <div class="fade-in">
+        <span class="kicker">Resources</span>
+        <h1>Learn, practice, and move forward — without overwhelm</h1>
+        <p class="subtitle">Curated articles, quick guides, and downloads to support your journey. Filter by topic, discover beginner‑friendly reads, and save what matters most.</p>
+        <div class="accent-line" aria-hidden="true"></div>
+        <div class="pill" aria-label="Resource types">
+          <span>Articles</span> • <span>Guides</span> • <span>Downloads</span>
+        </div>
+      </div>
+      <aside class="hero-card fade-in" aria-label="Popular topics">
+        <h3>Popular topics</h3>
+        <ul>
+          <li>Conversion process basics</li>
+          <li>Shabbat & calendar</li>
+          <li>Prayer & blessings</li>
+          <li>Movements: Orthodox, Conservative, Reform</li>
+          <li>Community involvement</li>
+          <li>Mikveh & lifecycle moments</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section">
+    <div class="container wrap">
+      <!-- Sidebar -->
+      <aside class="sidebar" aria-label="Filters">
+        <div class="panel">
+          <div class="search" role="search">
+            <input id="q" type="text" placeholder="Search resources…" />
+            <button id="searchBtn">Search</button>
+          </div>
+
+          <div class="filters">
+            <div class="group">
+              <h3>Type</h3>
+              <label><input type="checkbox" name="type" value="article" checked> Article</label>
+              <label><input type="checkbox" name="type" value="guide" checked> Guide</label>
+              <label><input type="checkbox" name="type" value="download" checked> Download</label>
+            </div>
+            <div class="group">
+              <h3>Topic</h3>
+              <label><input type="checkbox" name="topic" value="process" checked> Conversion process</label>
+              <label><input type="checkbox" name="topic" value="shabbat" checked> Shabbat & calendar</label>
+              <label><input type="checkbox" name="topic" value="prayer" checked> Prayer</label>
+              <label><input type="checkbox" name="topic" value="movements" checked> Movements</label>
+              <label><input type="checkbox" name="topic" value="community" checked> Community</label>
+              <label><input type="checkbox" name="topic" value="ritual" checked> Ritual / Mikveh</label>
+            </div>
+            <div class="group">
+              <h3>Level</h3>
+              <label><input type="checkbox" name="level" value="beginner" checked> Beginner</label>
+              <label><input type="checkbox" name="level" value="intermediate" checked> Intermediate</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel" style="margin-top:14px">
+          <h3>Get updates</h3>
+          <p class="subtitle" style="margin:6px 0 10px">New resources, once or twice a month.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks! You\'re subscribed.');">
+            <input type="email" placeholder="Your email" required style="width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px" />
+            <button class="btn" style="width:100%; margin-top:10px">Subscribe</button>
+          </form>
+        </div>
+      </aside>
+
+      <!-- Grid -->
+      <div>
+        <div class="grid" id="grid">
+          <!-- Example cards -->
+          <article class="card fade-in" data-type="article" data-topic="process" data-level="beginner">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Process</span><span>Beginner</span> • <time datetime="2025-07-10">Jul 10, 2025</time></div>
+              <h3>How to start the conversion process</h3>
+              <p>Essential stages, realistic timelines, and how to prepare for your first rabbinic conversation.</p>
+            </div>
+            <a class="btn more" href="#">Read</a>
+          </article>
+
+          <article class="card fade-in" data-type="guide" data-topic="shabbat" data-level="beginner">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Shabbat</span><span>Beginner</span> • <time datetime="2025-06-01">Jun 1, 2025</time></div>
+              <h3>Shabbat in 7 simple habits</h3>
+              <p>A gentle introduction to the weekly rhythm, blessings, and home practice.</p>
+            </div>
+            <a class="btn more" href="#">Open guide</a>
+          </article>
+
+          <article class="card fade-in" data-type="download" data-topic="prayer" data-level="beginner">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Prayer</span><span>Beginner</span> • <time datetime="2025-05-18">May 18, 2025</time></div>
+              <h3>Printable: basic blessings sheet</h3>
+              <p>Practice core blessings with transliteration and translation. PDF download.</p>
+            </div>
+            <a class="btn more" href="#">Download</a>
+          </article>
+
+          <article class="card fade-in" data-type="article" data-topic="movements" data-level="beginner">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Movements</span><span>Beginner</span> • <time datetime="2025-04-12">Apr 12, 2025</time></div>
+              <h3>Movements in Judaism: a quick map</h3>
+              <p>Key differences at a glance and how they impact the conversion path.</p>
+            </div>
+            <a class="btn more" href="#">Read</a>
+          </article>
+
+          <article class="card fade-in" data-type="guide" data-topic="community" data-level="intermediate">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Community</span><span>Intermediate</span> • <time datetime="2025-08-02">Aug 2, 2025</time></div>
+              <h3>Finding and visiting local communities</h3>
+              <p>Practical steps to visit shuls, meet people, and participate respectfully.</p>
+            </div>
+            <a class="btn more" href="#">Open guide</a>
+          </article>
+
+          <article class="card fade-in" data-type="article" data-topic="ritual" data-level="beginner">
+            <div class="thumb" aria-hidden="true"></div>
+            <div class="body">
+              <div class="meta"><span class="tag">Ritual</span><span>Beginner</span> • <time datetime="2025-03-20">Mar 20, 2025</time></div>
+              <h3>Mikveh 101: meaning and preparation</h3>
+              <p>What to expect, how to prepare, and reflections from people who’ve gone through it.</p>
+            </div>
+            <a class="btn more" href="#">Read</a>
+          </article>
+        </div>
+
+        <!-- Pagination (static demo) -->
+        <nav class="pagination" aria-label="Pagination">
+          <a href="#" class="active">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+        </nav>
+
+        <!-- Newsletter / downloads CTA -->
+        <div class="cta-block" style="margin-top:26px">
+          <h3>Want new resources in your inbox?</h3>
+          <p class="subtitle">No spam. Just helpful reading, once or twice a month.</p>
+          <form onsubmit="event.preventDefault(); alert('Thanks! You\'re subscribed.');" style="display:flex; gap:10px; justify-content:center; margin-top:8px">
+            <input type="email" placeholder="Your email" required style="min-width:260px; max-width:340px; width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px" />
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Fade-in
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+    // Simple client-side filtering demo
+    const grid = document.getElementById('grid');
+    const checks = Array.from(document.querySelectorAll('.filters input[type="checkbox"]'));
+    const searchBtn = document.getElementById('searchBtn');
+    const q = document.getElementById('q');
+
+    function applyFilters(){
+      const active = {
+        type: checks.filter(c=>c.name==='type' && c.checked).map(c=>c.value),
+        topic: checks.filter(c=>c.name==='topic' && c.checked).map(c=>c.value),
+        level: checks.filter(c=>c.name==='level' && c.checked).map(c=>c.value)
+      };
+      const term = q.value.trim().toLowerCase();
+
+      grid.querySelectorAll('.card').forEach(card=>{
+        const t = card.dataset.type;
+        const tp = card.dataset.topic;
+        const lv = card.dataset.level;
+        const text = card.innerText.toLowerCase();
+
+        const match = active.type.includes(t) && active.topic.includes(tp) && active.level.includes(lv) && (!term || text.includes(term));
+        card.style.display = match ? '' : 'none';
+      });
+    }
+
+    checks.forEach(c=>c.addEventListener('change', applyFilters));
+    searchBtn.addEventListener('click', applyFilters);
+    q.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); applyFilters(); } });
+  </script>
+</body>
+</html>
