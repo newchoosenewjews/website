@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members — New Choose New Jews</title>
+  <style>
+    :root{
+      --primary:#1437ff;   /* brand blue */
+      --accent:#ffd500;    /* brand yellow */
+      --text:#0f172a;
+      --muted:#475569;
+      --soft:#f6f7fb;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:18px;
+      --container:1100px;
+      --btn-gradient: linear-gradient(45deg, var(--primary), #3b57ff);
+      --chip-bg:#f1f5ff;
+      --chip-br:#e0e7ff;
+      --ok:#16a34a; --warn:#f59e0b; --err:#dc2626;
+    }
+    *{margin:0; padding:0; box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:var(--white); line-height:1.6}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+    .section{padding:92px 20px}
+
+    /* Header */
+    .header{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid #eef0f5; box-shadow:0 6px 20px rgba(20,55,255,0.05)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none}
+    .brand img{height:40px}
+    .brand-title{font-weight:800; letter-spacing:0.4px; color:var(--primary)}
+    .menu{display:flex; gap:20px; align-items:center}
+    .menu a{color:#334155; text-decoration:none; font-weight:500}
+    .menu a:hover{color:var(--primary)}
+    .menu .active{color:var(--primary); font-weight:800}
+    .cta{padding:10px 16px; background:var(--btn-gradient); color:#fff !important; border-radius:999px; box-shadow:0 8px 22px rgba(20,55,255,0.25)}
+
+    /* Hero */
+    .hero{background:radial-gradient(900px 500px at 10% 0%, rgba(20,55,255,0.08), transparent 60%),
+                   radial-gradient(900px 500px at 110% 10%, rgba(255,213,0,0.12), transparent 60%),
+                   var(--white)}
+    .hero-wrap{display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center}
+    .kicker{font-size:.9rem; font-weight:800; letter-spacing:2px; color:var(--primary); text-transform:uppercase}
+    h1{font-size:3rem; line-height:1.08; font-weight:300; margin:12px 0 10px}
+    .subtitle{font-size:1.1rem; color:var(--muted); max-width:62ch}
+    .accent-line{width:72px; height:5px; background:linear-gradient(90deg, var(--accent), var(--primary)); border-radius:6px; margin:20px 0}
+    .badge{display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background:#f1f5ff; border:1px solid #e0e7ff; color:#1e3a8a; font-weight:700; font-size:.82rem}
+
+    /* Auth */
+    .auth{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .card{background:#fff; border:1px solid #eef0f5; border-radius:18px; box-shadow:var(--shadow); padding:20px}
+    .card h3{margin-bottom:6px}
+    .field{margin:10px 0}
+    .field label{display:block; font-weight:700; margin-bottom:6px}
+    .field input{width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px}
+    .btn{display:inline-block; padding:12px 18px; background:var(--btn-gradient); color:#fff; text-decoration:none; border-radius:999px; font-weight:700; border:0; cursor:pointer}
+    .ghost{padding:10px 14px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; font-weight:700; cursor:pointer}
+    .muted{color:#64748b}
+
+    /* Dashboard */
+    .wrap{display:grid; grid-template-columns:260px 1fr; gap:22px}
+    .side{position:sticky; top:92px; align-self:start}
+    .side .panel{background:#fff; border:1px solid #eef0f5; border-radius:14px; box-shadow:var(--shadow); padding:14px}
+    .side .panel a{display:flex; align-items:center; gap:8px; padding:10px 12px; border-radius:10px; color:#334155; text-decoration:none}
+    .side .panel a.active, .side .panel a:hover{background:#f1f5ff; color:#1e3a8a; font-weight:800}
+    .main .panel{background:#fff; border:1px solid #eef0f5; border-radius:14px; box-shadow:var(--shadow); padding:18px}
+
+    .chip{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; background:rgba(20,55,255,0.08); color:#1e3a8a; font-weight:700; font-size:.8rem}
+    .ok{color:var(--ok)} .warn{color:var(--warn)} .err{color:var(--err)}
+
+    table{width:100%; border-collapse:collapse}
+    th,td{padding:10px 8px; border-bottom:1px solid #eef0f5; text-align:left; font-size:.95rem}
+    tbody tr:hover{background:#f8fafc}
+
+    .downloads{display:grid; grid-template-columns:repeat(2,1fr); gap:12px}
+    .dl{border:1px solid #eef0f5; border-radius:12px; padding:12px; display:flex; align-items:center; justify-content:space-between}
+
+    /* Modal */
+    .modal{position:fixed; inset:0; background:rgba(15,23,42,0.4); display:none; align-items:center; justify-content:center; z-index:1200}
+    .modal.open{display:flex}
+    .modal .sheet{background:#fff; border-radius:14px; width:min(520px, 92vw); padding:18px; box-shadow:0 30px 80px rgba(0,0,0,0.25)}
+
+    /* Animations */
+    .fade-in{opacity:0; transform:translateY(26px); transition:all .7s ease}
+    .fade-in.visible{opacity:1; transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns:1fr}
+      h1{font-size:2.25rem}
+      .auth{grid-template-columns:1fr}
+      .wrap{grid-template-columns:1fr}
+      .downloads{grid-template-columns:1fr}
+      .brand img{height:34px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="./index.html">
+        <img src="logo.png" alt="NCNJ logo" />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="./start.html">Start</a>
+        <a href="./resources.html">Resources</a>
+        <a href="./shop.html">Shop</a>
+        <a href="./consultation.html">1:1 Consult</a>
+        <a href="#" class="active">Members</a>
+        <a href="./index.html#contact" class="cta" id="contactBtn">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero section">
+    <div class="container hero-wrap">
+      <div class="fade-in">
+        <span class="kicker">Members</span>
+        <h1>Welcome to your member area</h1>
+        <p class="subtitle">Sign in or create an account to access your downloads, orders, and profile. Consultation clients get a <strong>14% storewide discount</strong>.</p>
+        <div class="accent-line" aria-hidden="true"></div>
+        <span class="badge" id="statusBadge">Status: Signed out</span>
+      </div>
+      <aside class="fade-in" aria-hidden="true">
+        <img alt="Decorative" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='280' viewBox='0 0 520 280'%3E%3Crect width='520' height='280' fill='%23eef2ff'/%3E%3Ccircle cx='360' cy='120' r='58' fill='%23ffd500'/%3E%3Ccircle cx='200' cy='180' r='48' fill='%231437ff' fill-opacity='.18'/%3E%3Crect x='90' y='60' width='220' height='120' rx='16' fill='%23ffffff' stroke='%23e5e7eb'/%3E%3Crect x='120' y='92' width='140' height='12' rx='6' fill='%231437ff'/%3E%3Crect x='120' y='116' width='170' height='8' rx='4' fill='%23c7d2fe'/%3E%3C/ svg%3E"/>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Auth cards -->
+  <section class="section" id="authSection">
+    <div class="container auth">
+      <form class="card" id="signinForm">
+        <h3>Sign in</h3>
+        <p class="muted">Access your downloads, orders, and profile.</p>
+        <div class="field"><label for="emailIn">Email</label><input id="emailIn" name="email" type="email" required></div>
+        <div class="field"><label for="passIn">Password</label><input id="passIn" name="password" type="password" required></div>
+        <button class="btn" type="submit">Sign in</button>
+        <button type="button" class="ghost" id="forgotBtn" style="margin-left:8px">Forgot password?</button>
+      </form>
+
+      <form class="card" id="signupForm">
+        <h3>Create account</h3>
+        <p class="muted">New here? Create a free account to keep everything in one place.</p>
+        <div class="field"><label for="nameUp">Name</label><input id="nameUp" name="name" type="text" required></div>
+        <div class="field"><label for="emailUp">Email</label><input id="emailUp" name="email" type="email" required></div>
+        <div class="field"><label for="passUp">Password</label><input id="passUp" name="password" type="password" minlength="6" required></div>
+        <button class="btn" type="submit">Create account</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="section" id="dashSection" style="display:none">
+    <div class="container wrap">
+      <!-- Side -->
+      <aside class="side">
+        <div class="panel">
+          <a href="#" data-panel="overview" class="active">Overview</a>
+          <a href="#" data-panel="downloads">My downloads</a>
+          <a href="#" data-panel="orders">Orders</a>
+          <a href="#" data-panel="profile">Profile</a>
+          <a href="#" data-panel="billing">Billing</a>
+          <a href="#" data-panel="settings">Settings</a>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <div style="display:flex; align-items:center; justify-content:space-between">
+            <span class="chip" id="planChip">Plan: Free</span>
+            <button class="btn" id="upgradeBtn" style="padding:8px 12px">Upgrade</button>
+          </div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <button class="ghost" id="signoutBtn" style="width:100%">Sign out</button>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <!-- Overview -->
+        <section class="panel" data-view="overview">
+          <h3>Welcome back, <span id="userName">friend</span> 👋</h3>
+          <p class="muted">Here’s a quick summary of your account.</p>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px">
+            <div class="card" style="padding:12px"><strong id="dlCount">0</strong><div class="muted">Downloads</div></div>
+            <div class="card" style="padding:12px"><strong id="orderCount">0</strong><div class="muted">Orders</div></div>
+            <div class="card" style="padding:12px"><strong id="planLabel">Free</strong><div class="muted">Plan</div></div>
+          </div>
+          <div style="height:12px"></div>
+          <div class="card" style="padding:12px">
+            <strong>Member tip:</strong> Consultation clients receive <b>14% off</b> in the shop. Look for your code in the confirmation email.
+          </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="panel" data-view="downloads" style="display:none">
+          <h3>My downloads</h3>
+          <p class="muted">Your purchased PDFs will appear here.</p>
+          <div class="downloads" id="dlList" style="margin-top:10px"></div>
+        </section>
+
+        <!-- Orders -->
+        <section class="panel" data-view="orders" style="display:none">
+          <h3>Orders</h3>
+          <table>
+            <thead><tr><th>Order #</th><th>Date</th><th>Status</th><th>Total</th><th>Receipt</th></tr></thead>
+            <tbody id="orderTable"></tbody>
+          </table>
+        </section>
+
+        <!-- Profile -->
+        <section class="panel" data-view="profile" style="display:none">
+          <h3>Profile</h3>
+          <form id="profileForm" style="max-width:520px">
+            <div class="field"><label>Name</label><input id="pName" required></div>
+            <div class="field"><label>Email</label><input id="pEmail" type="email" required></div>
+            <div class="field"><label>Location (optional)</label><input id="pLoc" placeholder="City, Country"></div>
+            <div class="field"><label>Movement interest (optional)</label><input id="pMov" placeholder="Undecided / Orthodox / Conservative / Reform"></div>
+            <button class="btn" type="submit">Save changes</button>
+          </form>
+        </section>
+
+        <!-- Billing -->
+        <section class="panel" data-view="billing" style="display:none">
+          <h3>Billing</h3>
+          <p class="muted">Manage your plan and payment details.</p>
+          <div style="height:8px"></div>
+          <button class="btn" id="billingPortal">Open billing portal</button>
+          <p class="muted" style="margin-top:8px">(This opens your Stripe/Shopify customer portal once connected.)</p>
+        </section>
+
+        <!-- Settings -->
+        <section class="panel" data-view="settings" style="display:none">
+          <h3>Settings</h3>
+          <div class="field" style="max-width:520px">
+            <label>Change password</label>
+            <input id="newPass" type="password" placeholder="New password (min 6)">
+            <button class="btn" id="changePass" style="margin-top:8px">Update password</button>
+          </div>
+          <div style="height:10px"></div>
+          <button class="ghost" id="deleteAcc" style="border-color:var(--err); color:var(--err)">Delete account</button>
+        </section>
+      </main>
+    </div>
+  </section>
+
+  <!-- Reset password modal -->
+  <div class="modal" id="resetModal" aria-hidden="true" role="dialog" aria-label="Reset password">
+    <div class="sheet">
+      <h3>Reset password</h3>
+      <p class="muted">Enter your email and we’ll send you a reset link.</p>
+      <form id="resetForm" style="margin-top:10px">
+        <div class="field"><label>Email</label><input id="resetEmail" type="email" required></div>
+        <button class="btn" type="submit">Send link</button>
+        <button class="ghost" type="button" id="closeReset" style="margin-left:8px">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+    // --- Fake auth (localStorage demo) ---
+    const LS_KEY = 'ncnj_user';
+    const authSection = document.getElementById('authSection');
+    const dashSection = document.getElementById('dashSection');
+    const statusBadge = document.getElementById('statusBadge');
+    const planChip = document.getElementById('planChip');
+    const planLabel = document.getElementById('planLabel');
+    const userName = document.getElementById('userName');
+
+    function getUser(){ try{ return JSON.parse(localStorage.getItem(LS_KEY) || 'null'); }catch(e){ return null; } }
+    function setUser(u){ localStorage.setItem(LS_KEY, JSON.stringify(u)); render(); }
+
+    function render(){
+      const u = getUser();
+      if(u){
+        authSection.style.display = 'none';
+        dashSection.style.display = '';
+        statusBadge.textContent = 'Status: Signed in';
+        planChip.textContent = `Plan: ${u.plan || 'Free'}`;
+        planLabel.textContent = u.plan || 'Free';
+        userName.textContent = u.name || 'friend';
+        // Counts
+        document.getElementById('dlCount').textContent = (u.downloads || []).length;
+        document.getElementById('orderCount').textContent = (u.orders || []).length;
+        // Downloads list
+        const dlList = document.getElementById('dlList');
+        dlList.innerHTML = (u.downloads || []).map(d=>`<div class="dl"><div><strong>${d.title}</strong><div class="muted">${d.type} • ${d.date}</div></div><a class="btn" href="#">Download</a></div>`).join('') || '<p class="muted">No downloads yet.</p>';
+        // Orders table
+        const orderTable = document.getElementById('orderTable');
+        orderTable.innerHTML = (u.orders || []).map(o=>`<tr><td>#${o.id}</td><td>${o.date}</td><td>${o.status}</td><td>$${o.total}</td><td><a href="#">View</a></td></tr>`).join('') || '<tr><td colspan="5" class="muted">No orders yet.</td></tr>';
+        // Profile fields
+        document.getElementById('pName').value = u.name || '';
+        document.getElementById('pEmail').value = u.email || '';
+        document.getElementById('pLoc').value = u.location || '';
+        document.getElementById('pMov').value = u.movement || '';
+      } else {
+        authSection.style.display = '';
+        dashSection.style.display = 'none';
+        statusBadge.textContent = 'Status: Signed out';
+      }
+    }
+
+    // Forms
+    document.getElementById('signinForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('emailIn').value.trim();
+      const pass  = document.getElementById('passIn').value.trim();
+      if(!email || !pass) return;
+      // For demo: if account exists, sign in; else create temp account
+      let u = getUser();
+      if(u && u.email === email){ setUser(u); }
+      else { setUser({ name: email.split('@')[0], email, plan:'Free', downloads:[], orders:[] }); }
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    document.getElementById('signupForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('nameUp').value.trim();
+      const email = document.getElementById('emailUp').value.trim();
+      const pass  = document.getElementById('passUp').value.trim();
+      if(pass.length < 6){ alert('Password must be at least 6 characters.'); return; }
+      setUser({ name, email, plan:'Free', downloads:[], orders:[] });
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // Profile save
+    document.getElementById('profileForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const u = getUser(); if(!u) return;
+      u.name = document.getElementById('pName').value.trim();
+      u.email = document.getElementById('pEmail').value.trim();
+      u.location = document.getElementById('pLoc').value.trim();
+      u.movement = document.getElementById('pMov').value.trim();
+      setUser(u); alert('Profile updated.');
+    });
+
+    // Upgrade / billing
+    document.getElementById('upgradeBtn').addEventListener('click', ()=>{
+      const u = getUser(); if(!u) return;
+      alert('Upgrade flow would open your checkout (Stripe/Shopify). Marking as Pro for demo.');
+      u.plan = 'Pro'; setUser(u);
+    });
+    document.getElementById('billingPortal').addEventListener('click', ()=>{
+      alert('This would open the customer billing portal.');
+    });
+
+    // Settings
+    document.getElementById('changePass').addEventListener('click', ()=>{
+      const np = document.getElementById('newPass').value.trim();
+      if(np.length < 6){ alert('Password must be at least 6 characters.'); return; }
+      alert('Password updated (demo).');
+      document.getElementById('newPass').value='';
+    });
+    document.getElementById('deleteAcc').addEventListener('click', ()=>{
+      if(confirm('Delete your account? This action cannot be undone.')){
+        localStorage.removeItem(LS_KEY); render();
+        window.scrollTo({top:0, behavior:'smooth'});
+      }
+    });
+
+    // Sign out
+    document.getElementById('signoutBtn').addEventListener('click', ()=>{ localStorage.removeItem(LS_KEY); render(); });
+
+    // Panel switching
+    document.querySelectorAll('.side .panel a').forEach(link=>{
+      link.addEventListener('click', (e)=>{
+        e.preventDefault();
+        document.querySelectorAll('.side .panel a').forEach(a=>a.classList.remove('active'));
+        link.classList.add('active');
+        const view = link.dataset.panel;
+        document.querySelectorAll('[data-view]').forEach(v=>v.style.display='none');
+        document.querySelector(`[data-view="${view}"]`).style.display='';
+      });
+    });
+
+    // Reset modal
+    const modal = document.getElementById('resetModal');
+    document.getElementById('forgotBtn').addEventListener('click', ()=>{ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); });
+    document.getElementById('closeReset').addEventListener('click', ()=>{ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+    document.getElementById('resetForm').addEventListener('submit', (e)=>{ e.preventDefault(); alert('Reset link sent (demo).'); modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); });
+
+    // Seed demo data if signed in
+    (function seed(){
+      const u = getUser();
+      if(u && !u._seeded){
+        u.downloads = [
+          { title:'Basic Blessings Printable', type:'PDF', date:'Aug 4, 2025' },
+          { title:'Intro to Shabbat: 7 Habits', type:'PDF', date:'Aug 12, 2025' }
+        ];
+        u.orders = [
+          { id:'10023', date:'Aug 12, 2025', status:'Paid', total:'28.00' },
+          { id:'10011', date:'Aug 4, 2025', status:'Paid', total:'9.00' }
+        ];
+        u._seeded = true; setUser(u);
+      }
+    })();
+
+    render();
+  </script>
+</body>
+</html>
