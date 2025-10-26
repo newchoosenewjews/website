@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course — New Choose New Jews</title>
+  <style>
+    :root{
+      --primary:#1437ff;   /* brand blue */
+      --accent:#ffd500;    /* brand yellow */
+      --text:#0f172a;
+      --muted:#475569;
+      --soft:#f6f7fb;
+      --white:#ffffff;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:18px;
+      --container:1200px;
+      --btn-gradient: linear-gradient(45deg, var(--primary), #3b57ff);
+      --chip-bg:#f1f5ff; --chip-br:#e0e7ff;
+      --ok:#16a34a; --warn:#f59e0b; --err:#dc2626;
+    }
+    *{margin:0; padding:0; box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color:var(--text); background:var(--white); line-height:1.6}
+    img{max-width:100%; display:block}
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px}
+    .section{padding:92px 20px}
+
+    /* Header */
+    .header{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid #eef0f5; box-shadow:0 6px 20px rgba(20,55,255,0.05)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none}
+    .brand img{height:40px}
+    .brand-title{font-weight:800; letter-spacing:0.4px; color:var(--primary)}
+    .menu{display:flex; gap:20px; align-items:center}
+    .menu a{color:#334155; text-decoration:none; font-weight:500}
+    .menu a:hover{color:var(--primary)}
+    .menu .active{color:var(--primary); font-weight:800}
+    .cta{padding:10px 16px; background:var(--btn-gradient); color:#fff !important; border-radius:999px; box-shadow:0 8px 22px rgba(20,55,255,0.25)}
+
+    /* Hero */
+    .hero{background:radial-gradient(900px 500px at 10% 0%, rgba(20,55,255,0.08), transparent 60%),
+                   radial-gradient(900px 500px at 110% 10%, rgba(255,213,0,0.12), transparent 60%),
+                   var(--white)}
+    .kicker{font-size:.9rem; font-weight:800; letter-spacing:2px; color:var(--primary); text-transform:uppercase}
+    h1{font-size:2.4rem; line-height:1.08; font-weight:300; margin:12px 0 10px}
+    .subtitle{font-size:1.05rem; color:var(--muted); max-width:70ch}
+    .accent-line{width:72px; height:5px; background:linear-gradient(90deg, var(--accent), var(--primary)); border-radius:6px; margin:16px 0}
+
+    /* Layout */
+    .wrap{display:grid; grid-template-columns:320px 1fr; gap:22px}
+    .side{position:sticky; top:92px; align-self:start}
+    .panel{background:#fff; border:1px solid #eef0f5; border-radius:14px; box-shadow:var(--shadow); padding:16px}
+    .panel h3{font-size:1.02rem; margin-bottom:8px}
+
+    /* Curriculum */
+    .lesson{display:flex; gap:10px; align-items:center; padding:10px; border-radius:12px; border:1px solid #eef0f5; margin:8px 0; cursor:pointer}
+    .lesson:hover{background:#f8fafc}
+    .lesson.active{border-color:var(--primary); background:#f1f5ff}
+    .lesson .idx{width:28px; height:28px; display:grid; place-items:center; border-radius:8px; background:#eef2ff; font-weight:800; color:#1e3a8a}
+    .lesson .meta{font-size:.86rem; color:#64748b}
+    .lock{margin-left:auto; font-size:.8rem; color:#64748b}
+    .lock.locked{color:#dc2626}
+
+    /* Player */
+    .player{background:#000; border-radius:14px; overflow:hidden; aspect-ratio:16/9; display:grid; place-items:center}
+    .player iframe, .player video{width:100%; height:100%; display:block}
+    .player .poster{width:100%; height:100%; background:linear-gradient(135deg,#111827,#374151); color:#e5e7eb; display:grid; place-items:center}
+
+    /* Main */
+    .title-row{display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px}
+    .chips{display:flex; flex-wrap:wrap; gap:8px}
+    .chip{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:#f1f5ff; border:1px solid #e0e7ff; color:#1e3a8a; font-weight:700; font-size:.82rem}
+    .btn{display:inline-block; padding:10px 16px; background:var(--btn-gradient); color:#fff; text-decoration:none; border-radius:999px; font-weight:700; border:0; cursor:pointer}
+    .ghost{padding:10px 14px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; font-weight:700; cursor:pointer}
+    .progress{height:10px; background:#eef0f5; border-radius:999px; overflow:hidden}
+    .bar{height:100%; width:0; background:linear-gradient(90deg,var(--primary),#3b57ff);}
+
+    .two{display:grid; grid-template-columns:1.2fr .8fr; gap:16px}
+    .card{background:#fff; border:1px solid #eef0f5; border-radius:14px; box-shadow:var(--shadow); padding:16px}
+    details.card summary{cursor:pointer; font-weight:700}
+    details.card summary::-webkit-details-marker{display:none}
+    .muted{color:#64748b}
+
+    textarea{width:100%; min-height:120px; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px}
+
+    /* Sign-in required overlay */
+    .gate{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(15,23,42,0.55); z-index:1200}
+    .gate .sheet{background:#fff; width:min(560px, 92vw); border-radius:14px; padding:20px; box-shadow:0 30px 90px rgba(0,0,0,0.3)}
+
+    /* Animations */
+    .fade-in{opacity:0; transform:translateY(26px); transition:all .7s ease}
+    .fade-in.visible{opacity:1; transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 1100px){ .wrap{grid-template-columns:1fr} .two{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="./index.html">
+        <img src="logo.png" alt="NCNJ logo" />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="./start.html">Start</a>
+        <a href="./resources.html">Resources</a>
+        <a href="./shop.html">Shop</a>
+        <a href="./consultation.html">1:1 Consult</a>
+        <a href="./members.html" class="active">Members</a>
+        <a href="./index.html#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="section hero">
+    <div class="container">
+      <span class="kicker">Course</span>
+      <h1 id="courseTitle">Conversion Foundations — Starter Track</h1>
+      <p class="subtitle">A gentle, practical path to get oriented quickly. Videos, summaries, transcripts, and printable resources included.</p>
+      <div class="accent-line" aria-hidden="true"></div>
+      <div class="title-row">
+        <div class="chips">
+          <span class="chip" id="lessonCount">0 lessons</span>
+          <span class="chip" id="durationTotal">— total</span>
+          <span class="chip">Self‑paced</span>
+        </div>
+        <div style="min-width:220px; flex:1; max-width:420px">
+          <div class="progress" aria-label="Course progress"><div class="bar" id="progressBar"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="section" style="padding-top:32px">
+    <div class="container wrap">
+      <!-- Sidebar: Curriculum -->
+      <aside class="side">
+        <div class="panel">
+          <h3>Curriculum</h3>
+          <div id="curriculum"></div>
+        </div>
+        <div class="panel" style="margin-top:12px">
+          <h3>Course actions</h3>
+          <button class="ghost" id="resetCourse">Reset progress</button>
+          <button class="ghost" id="autoplayBtn" style="margin-left:8px">Autoplay: On</button>
+        </div>
+      </aside>
+
+      <!-- Main: Player + details -->
+      <main>
+        <div class="panel">
+          <div class="player" id="player">
+            <div class="poster">Select a lesson to start</div>
+          </div>
+          <div class="title-row" style="margin-top:12px">
+            <h2 id="lessonTitle" style="font-size:1.4rem">—</h2>
+            <div class="chips">
+              <span class="chip" id="lessonMeta">—</span>
+              <button class="btn" id="markComplete">Mark complete</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="two" style="margin-top:14px">
+          <section class="card">
+            <h3>Summary</h3>
+            <p id="lessonSummary" class="muted">—</p>
+            <div style="height:10px"></div>
+            <details class="card">
+              <summary>Transcript</summary>
+              <div id="lessonTranscript" class="muted" style="margin-top:10px">—</div>
+            </details>
+          </section>
+          <aside class="card">
+            <h3>Resources</h3>
+            <ul id="lessonResources" class="muted" style="list-style:disc; padding-left:18px"></ul>
+            <div style="height:12px"></div>
+            <h3>Your notes</h3>
+            <textarea id="lessonNotes" placeholder="Write notes for this lesson…"></textarea>
+            <div style="display:flex; gap:8px; margin-top:8px">
+              <button class="ghost" id="saveNotes">Save notes</button>
+              <button class="ghost" id="clearNotes">Clear</button>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </section>
+
+  <!-- Gate if not signed in -->
+  <div class="gate" id="gate" aria-hidden="true">
+    <div class="sheet">
+      <h3>Sign in required</h3>
+      <p class="muted">Please sign in to access the course.</p>
+      <div style="height:10px"></div>
+      <a href="./members.html" class="btn">Go to Members & sign in</a>
+    </div>
+  </div>
+
+  <script>
+    // Fade-in observer
+    const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); }, {threshold:0.1, rootMargin:'0px 0px -50px 0px'});
+    document.querySelectorAll('.section, .panel').forEach(el=>io.observe(el));
+
+    // Auth gate (robust) — requires LS user from members page
+    const LS_USER = 'ncnj_user';
+    const gate = document.getElementById('gate');
+    function checkGate(){
+      const u = JSON.parse(localStorage.getItem(LS_USER) || 'null');
+      if(!gate) return;
+      gate.style.display = u ? 'none' : 'flex';
+      gate.setAttribute('aria-hidden', u ? 'true' : 'false');
+    }
+    // Initial check and cross‑tab sync
+    checkGate();
+    window.addEventListener('storage', (e)=>{ if(e.key === LS_USER) checkGate(); });
+    // Keep user reference for the rest of the script (plan, progress, etc.)
+    const user = JSON.parse(localStorage.getItem(LS_USER) || 'null');
+
+    // Course data (editable)
+    const COURSE_ID = 'ncnj_course_foundations_v1';
+    const lessons = [
+      { id:'l1', idx:1, title:'Welcome & how this course works', dur:'4:21', type:'video', req:'Free', youtube:'dQw4w9WgXcQ', summary:'Overview of the course, pacing, and how to get the most out of each module.', transcript:'Intro transcript placeholder. Replace with real text.', resources:[{label:'Course syllabus (PDF)', href:'#'}, {label:'Weekly study tracker', href:'#'}] },
+      { id:'l2', idx:2, title:'Jewish calendar & Shabbat overview', dur:'12:40', type:'video', req:'Free', youtube:'dQw4w9WgXcQ', summary:'Understand rhythms, basic terms, and why time matters in practice.', transcript:'Calendar & Shabbat transcript placeholder.', resources:[{label:'Calendar cheat sheet', href:'#'}] },
+      { id:'l3', idx:3, title:'Prayer basics & common blessings', dur:'10:03', type:'video', req:'Free', youtube:'dQw4w9WgXcQ', summary:'Siddur navigation, structure, and everyday blessings with transliteration.', transcript:'Prayer basics transcript placeholder.', resources:[{label:'Blessings printable (PDF)', href:'#'}] },
+      { id:'l4', idx:4, title:'Movements in Judaism: a quick map', dur:'9:27', type:'video', req:'Pro', youtube:'dQw4w9WgXcQ', summary:'Key differences at a glance and how they impact conversion paths.', transcript:'Movements transcript placeholder.', resources:[{label:'Comparison table (PDF)', href:'#'}] },
+      { id:'l5', idx:5, title:'Preparing to speak with a rabbi', dur:'7:18', type:'video', req:'Pro', youtube:'dQw4w9WgXcQ', summary:'Etiquette, questions to ask, and what to expect in first meetings.', transcript:'Prep to speak with a rabbi transcript placeholder.', resources:[{label:'Questions template', href:'#'}] }
+    ];
+
+    // Helpers
+    const $ = sel => document.querySelector(sel);
+    const curriculumEl = $('#curriculum');
+    const playerEl = $('#player');
+    const titleEl = $('#lessonTitle');
+    const metaEl = $('#lessonMeta');
+    const sumEl = $('#lessonSummary');
+    const trEl = $('#lessonTranscript');
+    const resEl = $('#lessonResources');
+    const notesEl = $('#lessonNotes');
+    const progressBar = $('#progressBar');
+    const bar = progressBar;
+    const lessonCount = $('#lessonCount');
+    const durationTotal = $('#durationTotal');
+
+    // Duration total (simple sum of mm:ss)
+    function totalDuration(){
+      let secs = 0;
+      lessons.forEach(l=>{ const [m,s] = l.dur.split(':').map(Number); secs += (m*60 + s); });
+      const h = Math.floor(secs/3600); const m = Math.floor((secs%3600)/60);
+      return h ? `${h}h ${m}m` : `${m}m`;
+    }
+
+    // State
+    const PRO = (user && user.plan === 'Pro');
+    const key = `${COURSE_ID}_progress`;
+    const state = JSON.parse(localStorage.getItem(key) || '{"completed":[], "last":null, "autoplay":true, "notes":{}}');
+
+    // Render curriculum
+    function renderCurriculum(){
+      curriculumEl.innerHTML = lessons.map(l=>{
+        const locked = l.req==='Pro' && !PRO;
+        return `<div class="lesson" data-id="${l.id}" aria-label="Lesson ${l.idx}">
+          <div class="idx">${l.idx}</div>
+          <div>
+            <div><strong>${l.title}</strong></div>
+            <div class="meta">${l.dur} • ${l.req}</div>
+          </div>
+          <div class="lock ${locked?'locked':''}">${locked?'Locked':''}</div>
+        </div>`;
+      }).join('');
+      // bind
+      curriculumEl.querySelectorAll('.lesson').forEach(el=>{
+        el.addEventListener('click', ()=>{
+          const id = el.getAttribute('data-id');
+          openLesson(id);
+        });
+      });
+      lessonCount.textContent = `${lessons.length} lessons`;
+      durationTotal.textContent = `${totalDuration()} total`;
+      highlightActive();
+    }
+
+    function highlightActive(){
+      curriculumEl.querySelectorAll('.lesson').forEach(el=>el.classList.remove('active'));
+      if(state.last){ const el = curriculumEl.querySelector(`[data-id="${state.last}"]`); if(el) el.classList.add('active'); }
+    }
+
+    // Load lesson into player
+    function openLesson(id){
+      const l = lessons.find(x=>x.id===id) || lessons[0];
+      const locked = l.req==='Pro' && !PRO;
+      if(locked){ alert('This lesson is available for Pro members.'); return; }
+      state.last = l.id; save();
+      // Player
+      playerEl.innerHTML = `<iframe src="https://www.youtube.com/embed/${l.youtube}?rel=0" title="${l.title}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+      // Info
+      titleEl.textContent = l.title;
+      metaEl.textContent = `${l.dur} • ${l.req}`;
+      sumEl.textContent = l.summary;
+      trEl.textContent = l.transcript;
+      resEl.innerHTML = l.resources.map(r=>`<li><a href="${r.href}">${r.label}</a></li>`).join('') || '<li>No resources for this lesson.</li>';
+      notesEl.value = (state.notes && state.notes[l.id]) || '';
+      highlightActive();
+    }
+
+    // Mark complete
+    $('#markComplete').addEventListener('click', ()=>{
+      if(!state.last) return;
+      if(!state.completed.includes(state.last)) state.completed.push(state.last);
+      save();
+      updateProgress();
+      // Autoplay next
+      if(state.autoplay){
+        const idx = lessons.findIndex(x=>x.id===state.last);
+        const next = lessons[idx+1];
+        if(next){ openLesson(next.id); }
+      }
+    });
+
+    // Notes
+    $('#saveNotes').addEventListener('click', ()=>{
+      if(!state.last) return;
+      state.notes = state.notes || {};
+      state.notes[state.last] = notesEl.value;
+      save();
+      alert('Notes saved.');
+    });
+    $('#clearNotes').addEventListener('click', ()=>{ notesEl.value=''; });
+
+    // Actions
+    $('#resetCourse').addEventListener('click', ()=>{ if(confirm('Reset your course progress?')){ localStorage.removeItem(key); location.reload(); }});
+    const autoplayBtn = $('#autoplayBtn');
+    function syncAutoplay(){ autoplayBtn.textContent = `Autoplay: ${state.autoplay? 'On':'Off'}`; }
+    autoplayBtn.addEventListener('click', ()=>{ state.autoplay=!state.autoplay; save(); syncAutoplay(); });
+
+    // Progress
+    function updateProgress(){
+      const pct = Math.round((state.completed.length / lessons.length) * 100);
+      bar.style.width = pct + '%';
+      bar.setAttribute('aria-valuenow', pct);
+    }
+
+    function save(){ localStorage.setItem(key, JSON.stringify(state)); }
+
+    // Init
+    renderCurriculum();
+    syncAutoplay();
+    updateProgress();
+    if(state.last){ openLesson(state.last); }
+    else { openLesson(lessons[0].id); }
+  </script>
+</body>
+</html>
