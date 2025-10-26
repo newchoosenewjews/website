@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Choose New Jews — Guidance for Conversion to Judaism</title>
+  <style>
+    :root{
+      /* Update these to your final palette if needed */
+      --primary:#1437ff;   /* brand blue */
+      --accent:#ffd500;    /* brand yellow */
+      --text:#333333;
+      --muted:#666666;
+      --bg:#ffffff;
+      --bg-soft:#f6f7fb;
+      --shadow:0 10px 30px rgba(0,0,0,0.08);
+      --radius:20px;
+      --radius-sm:12px;
+      --container:1200px;
+      --gradient: linear-gradient(135deg, #eef2ff 0%, #f7f8ff 100%);
+      --btn-gradient: linear-gradient(45deg, var(--primary), #3b57ff);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; line-height:1.6; color: var(--text); background: var(--bg); overflow-x:hidden}
+    img{max-width:100%; display:block}
+
+    .container{max-width:var(--container); margin:0 auto; padding:0 20px; position:relative}
+    .section{padding:100px 20px; position:relative}
+
+    /* Header */
+    .header{position:sticky; top:0; z-index:1000; background:#fff; border-bottom:1px solid #eef0f5; box-shadow:0 6px 20px rgba(20,55,255,0.05)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:72px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none}
+    .brand img{height:40px; width:auto}
+    .brand-title{font-weight:800; letter-spacing:0.4px; color:var(--primary)}
+    .menu{display:flex; gap:28px; align-items:center}
+    .menu a{color:#334155; text-decoration:none; font-weight:500}
+    .menu a:hover{color:var(--primary)}
+    .cta{padding:10px 16px; background:var(--btn-gradient); color:#fff !important; border-radius:999px; box-shadow:0 8px 22px rgba(20,55,255,0.25)}
+
+    /* Hero */
+    .hero{min-height:72vh; display:flex; align-items:center; background:var(--gradient)}
+    .grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:72px; align-items:center}
+    .kicker{font-size:0.9rem; font-weight:700; letter-spacing:2px; color:var(--primary); text-transform:uppercase}
+    h1{font-size:3.25rem; line-height:1.1; font-weight:300; margin:14px 0 18px; color:#111827}
+    .subtitle{font-size:1.15rem; color:var(--muted); max-width:58ch}
+    .accent-line{width:72px; height:5px; background:linear-gradient(90deg, var(--accent), var(--primary)); border-radius:6px; margin:26px 0}
+    .btn{display:inline-block; padding:14px 28px; background:var(--btn-gradient); color:#fff; text-decoration:none; border-radius:999px; font-weight:600; box-shadow:0 10px 28px rgba(20,55,255,0.25); transition:transform .25s ease, box-shadow .25s ease}
+    .btn:hover{transform:translateY(-2px); box-shadow:0 16px 36px rgba(20,55,255,0.32)}
+
+    .mock{position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:0 25px 60px rgba(0,0,0,0.10)}
+    .mock img{height:540px; width:100%; object-fit:cover}
+
+    /* Start (Quiz) */
+    .start{text-align:center; background:#fff}
+    .start .title{font-size:2.4rem; font-weight:300}
+    .start .big{font-size:2.8rem; color:var(--primary); letter-spacing:3px; text-transform:uppercase; font-weight:300; margin:10px 0 8px}
+    .start .tag{font-size:1.6rem; font-weight:300; color:#0f172a}
+    .lead{font-size:1.12rem; color:var(--muted); margin:28px auto 34px; max-width:62ch}
+
+    /* Resources (Blog) */
+    .section-title{text-align:center; margin-bottom:70px}
+    .section-title h2{font-size:2.4rem; font-weight:300; color:#0f172a}
+    .section-title .subtitle{font-size:1.15rem; color:var(--muted); font-weight:500}
+    .section-title .accent-line{margin:20px auto 0}
+
+    .cards{display:grid; grid-template-columns:repeat(3, 1fr); gap:32px}
+    .card{background:#fff; border-radius:15px; overflow:hidden; box-shadow:var(--shadow); transition:transform .25s ease, box-shadow .25s ease}
+    .card:hover{transform:translateY(-5px); box-shadow:0 18px 40px rgba(0,0,0,0.12)}
+    .card-media{height:220px; background:#f3f4f6; position:relative}
+    .badge{position:absolute; top:18px; left:18px; background:rgba(255,255,255,0.95); padding:6px 14px; border-radius:999px; font-size:.85rem; color:#334155; font-weight:600}
+    .card-body{padding:24px}
+    .card h3{font-size:1.22rem; margin-bottom:10px; color:#0f172a}
+    .card p{font-size:.98rem; color:var(--muted)}
+
+    /* Shop */
+    .shop .grid{grid-template-columns:1fr 1fr}
+    .shop p{margin-bottom:16px}
+
+    /* 1:1 Consult */
+    .consult{background:var(--bg-soft)}
+
+    /* Instagram */
+    .ig{position:relative; text-align:center; background:linear-gradient(135deg, rgba(20,55,255,0.06) 0%, rgba(20,55,255,0.02) 100%); overflow:hidden}
+    .ig .bg{position:absolute; inset:0; background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23f8fafc" opacity="0.35"/><circle cx="200" cy="150" r="110" fill="%231437ff" opacity="0.08"/><circle cx="1000" cy="200" r="160" fill="%23ffd500" opacity="0.10"/><circle cx="600" cy="600" r="130" fill="%231437ff" opacity="0.08"/></svg>'); background-size:cover; z-index:1}
+    .ig .wrap{position:relative; z-index:2}
+
+    /* Footer spacing helper for sticky header */
+    .offset{height:0}
+
+    /* Animations */
+    .fade-in{opacity:0; transform:translateY(28px); transition:all .8s ease}
+    .fade-in.visible{opacity:1; transform:translateY(0)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .grid{grid-template-columns:1fr; gap:40px}
+      .cards{grid-template-columns:1fr}
+      h1{font-size:2.35rem}
+      .brand img{height:34px}
+      .menu{gap:18px}
+      .header .cta{display:none}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header" role="banner">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="New Choose New Jews Home">
+        <!-- Replace src with your hosted logo path. You can name the file logo.png and keep it next to this HTML. -->
+        <img src="logo.png" alt="New Choose New Jews logo" />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="#home">Home</a>
+        <a href="#start">Start</a>
+        <a href="#resources">Resources</a>
+        <a href="#shop">Shop</a>
+        <a href="#consult">1:1 Consult</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Home / Hero -->
+  <main id="home" class="hero section">
+    <div class="container grid">
+      <div class="fade-in">
+        <span class="kicker">Community & guidance</span>
+        <h1>Considering conversion to Judaism, with clarity and support</h1>
+        <p class="subtitle">We are a community built by a convert for anyone exploring Judaism. Find a safe space to ask questions, learn the basics, and map your next steps—at your pace.</p>
+        <div class="accent-line" aria-hidden="true"></div>
+        <a class="btn" href="#consult">Book a 1:1 call</a>
+      </div>
+      <div class="mock fade-in" aria-hidden="true">
+        <img alt="Community illustration" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='540' viewBox='0 0 500 540'%3E%3Crect width='500' height='540' fill='%23f4f6ff'/%3E%3Crect x='60' y='60' width='380' height='420' rx='20' fill='%23ffffff'/%3E%3Ccircle cx='250' cy='200' r='80' fill='%23ffd500'/%3E%3Crect x='150' y='310' width='200' height='14' rx='7' fill='%231437ff'/%3E%3Crect x='110' y='348' width='280' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='110' y='368' width='240' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='110' y='388' width='270' height='8' rx='4' fill='%23dbe1ff'/%3E%3C/svg%3E"/>
+      </div>
+    </div>
+  </main>
+
+  <!-- Start / Quiz-like section -->
+  <section id="start" class="start section">
+    <div class="container">
+      <div class="fade-in">
+        <h3 class="title">Ready to begin?</h3>
+        <div class="big">FIRST STEP</div>
+        <div class="tag">A simple route to start</div>
+        <p class="lead">Answer a few questions and get a tailored starter path: core topics to learn, reading suggestions, and what to prepare for your first rabbinic conversation.</p>
+        <a href="#consult" class="btn">Get my starter route</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources / Articles -->
+  <section id="resources" class="section" style="background: var(--bg-soft)">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Resources & articles</h2>
+        <div class="subtitle">Learn, ask, and move forward with confidence</div>
+        <div class="accent-line" aria-hidden="true"></div>
+      </div>
+
+      <div class="cards">
+        <article class="card fade-in">
+          <div class="card-media">
+            <span class="badge">Process</span>
+          </div>
+          <div class="card-body">
+            <h3>How to start the conversion process</h3>
+            <p>Essential steps, realistic expectations, and how to prepare for your first talk with a rabbi.</p>
+          </div>
+        </article>
+
+        <article class="card fade-in">
+          <div class="card-media">
+            <span class="badge">Study</span>
+          </div>
+          <div class="card-body">
+            <h3>Organizing Jewish learning without overwhelm</h3>
+            <p>Simple frameworks to structure study, stay motivated, and build a strong foundation.</p>
+          </div>
+        </article>
+
+        <article class="card fade-in">
+          <div class="card-media">
+            <span class="badge">Ritual</span>
+          </div>
+          <div class="card-body">
+            <h3>Mikveh: beyond the rite</h3>
+            <p>What to expect, how to prepare, and why many describe it as a transformative moment.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop -->
+  <section id="shop" class="shop section">
+    <div class="container grid">
+      <div class="fade-in">
+        <h2>Visit</h2>
+        <div class="big" style="color: var(--primary); letter-spacing:2px; text-transform:uppercase; font-weight:300">THE SHOP</div>
+        <p><strong>Recommended books and designed prayers</strong> curated for your study and daily practice. Find beginner guides, reading lists, and materials to move forward with calm and order.</p>
+        <p>More digital resources coming soon.</p>
+        <a href="#shop" class="btn">Explore resources</a>
+      </div>
+      <div class="mock fade-in" aria-hidden="true">
+        <img alt="Shop mock" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect width='500' height='400' fill='%23eef2ff'/%3E%3Crect x='50' y='50' width='400' height='300' rx='16' fill='%23ffffff'/%3E%3Crect x='100' y='100' width='150' height='10' rx='5' fill='%231437ff'/%3E%3Ccircle cx='350' cy='120' r='30' fill='%23ffd500'/%3E%3Crect x='100' y='150' width='220' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='170' width='180' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='190' width='240' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='250' width='120' height='34' rx='17' fill='%231437ff'/%3E%3C/svg%3E"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1:1 Consult -->
+  <section id="consult" class="consult section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>1:1 Consultation</h2>
+        <div class="subtitle">Your personalized map, in one video call</div>
+        <div class="accent-line" aria-hidden="true"></div>
+      </div>
+      <div class="container fade-in" style="max-width:800px;">
+        <p class="lead">A focused online meeting to <strong>answer questions</strong>, define <strong>first steps</strong>, and understand how the process looks across movements and in your context. Schedule at least 48 hours in advance.</p>
+        <div style="margin-top:26px">
+          <a class="btn" href="#contact">Schedule now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram CTA -->
+  <section id="instagram" class="ig section">
+    <div class="bg"></div>
+    <div class="container wrap">
+      <div class="fade-in" style="max-width:640px; margin:0 auto; text-align:center">
+        <h2>Are we connected on Instagram?</h2>
+        <p class="lead">Daily content, real conversion stories, and tips to study with focus.</p>
+        <a href="#contact" class="btn">Let's connect</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>Contact</h2>
+        <div class="subtitle">Tell us where you are in your journey</div>
+        <div class="accent-line" aria-hidden="true"></div>
+      </div>
+
+      <form class="fade-in" onsubmit="event.preventDefault(); alert('Thanks for your message! We\'ll get back to you soon.');" style="max-width:720px; margin:0 auto">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px">
+          <input required placeholder="Name" style="padding:14px 16px; border:1px solid #e5e7eb; border-radius:10px" />
+          <input required type="email" placeholder="Email" style="padding:14px 16px; border:1px solid #e5e7eb; border-radius:10px" />
+        </div>
+        <textarea required placeholder="Message" rows="5" style="width:100%; margin-top:16px; padding:14px 16px; border:1px solid #e5e7eb; border-radius:10px"></textarea>
+        <button class="btn" style="margin-top:16px">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="offset" aria-hidden="true"></div>
+
+  <script>
+    // Intersection Observer for fade-in
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
+
+    // Subtle parallax for mocks
+    window.addEventListener('scroll',()=>{
+      const y = window.pageYOffset;
+      document.querySelectorAll('.mock').forEach(el=>{
+        el.style.transform = `translateY(${y * 0.15}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
