@@ -6,7 +6,6 @@
   <title>New Choose New Jews — Guidance for Conversion to Judaism</title>
   <style>
     :root{
-      /* Update these to your final palette if needed */
       --primary:#1437ff;   /* brand blue */
       --accent:#ffd500;    /* brand yellow */
       --text:#333333;
@@ -82,10 +81,13 @@
     /* 1:1 Consult */
     .consult{background:var(--bg-soft)}
 
-    /* Instagram */
-    .ig{position:relative; text-align:center; background:linear-gradient(135deg, rgba(20,55,255,0.06) 0%, rgba(20,55,255,0.02) 100%); overflow:hidden}
-    .ig .bg{position:absolute; inset:0; background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23f8fafc" opacity="0.35"/><circle cx="200" cy="150" r="110" fill="%231437ff" opacity="0.08"/><circle cx="1000" cy="200" r="160" fill="%23ffd500" opacity="0.10"/><circle cx="600" cy="600" r="130" fill="%231437ff" opacity="0.08"/></svg>'); background-size:cover; z-index:1}
-    .ig .wrap{position:relative; z-index:2}
+    /* Community / Social */
+    .community{position:relative; text-align:center; background:linear-gradient(135deg, rgba(20,55,255,0.06) 0%, rgba(20,55,255,0.02) 100%); overflow:hidden}
+    .community .bg{position:absolute; inset:0; background-image:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect width="1200" height="800" fill="%23f8fafc" opacity="0.35"/><circle cx="200" cy="150" r="110" fill="%231437ff" opacity="0.08"/><circle cx="1000" cy="200" r="160" fill="%23ffd500" opacity="0.10"/><circle cx="600" cy="600" r="130" fill="%231437ff" opacity="0.08"/></svg>'); background-size:cover; z-index:1}
+    .community .wrap{position:relative; z-index:2; max-width:760px; margin:0 auto}
+    .icons{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:12px}
+    .icons a{display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid #e5e7eb; background:#fff; color:#334155; text-decoration:none; font-weight:600}
+    .icons a:hover{border-color:var(--primary); color:var(--primary)}
 
     /* Footer spacing helper for sticky header */
     .offset{height:0}
@@ -108,31 +110,29 @@
 <body>
   <!-- Header -->
   <header class="header" role="banner">
-  <div class="container nav">
-    <a class="brand" href="./index.html" aria-label="New Choose New Jews Home">
-      <img
-        src="./assets/brand/logo.png"
-        alt="New Choose New Jews logo"
-        height="40"
-        style="height:40px;width:auto"
-      />
+    <div class="container nav">
+      <a class="brand" href="./index.html" aria-label="New Choose New Jews Home">
+        <img
+          src="./assets/brand/logo.png"
+          alt="New Choose New Jews logo"
+          height="40"
+          style="height:40px;width:auto"
+        />
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
 
-      <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
-    </a>
-
-    <nav class="menu" aria-label="Primary Navigation">
-  <a href="./index.html#home">Home</a>
-  <a href="./start.html">Start</a>
-  <a href="./resources.html">Resources</a>
-  <a href="./about.html">About</a>
-  <a href="./shop.html">Shop</a>
-  <a href="./consultation.html">1:1 Consult</a>
-  <a href="./members.html" class="cta">Members</a>
-  <a href="./index.html#contact" class="cta">Contact</a>
-</nav>
-
-  </div>
-</header>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="./start.html">Start</a>
+        <a href="./resources.html">Resources</a>
+        <a href="./about.html">About</a>
+        <a href="./shop.html">Shop</a>
+        <a href="./consultation.html">1:1 Consult</a>
+        <a href="./members.html" class="cta">Members</a>
+        <a href="./index.html#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- Home / Hero -->
   <main id="home" class="hero section">
@@ -140,7 +140,8 @@
       <div class="fade-in">
         <span class="kicker">Community & guidance</span>
         <h1>Considering conversion to Judaism, with clarity and support</h1>
-        <p class="subtitle">We are a community built by a convert for anyone exploring Judaism. Find a safe space to ask questions, learn the basics, and map your next steps—at your pace.</p>
+        <p class="subtitle">We are a global online community of individuals converting to Judaism, founded by a fellow convert. Our mission is to provide guidance, education, and heartfelt support to anyone seeking to join the Jewish people — no matter where they are in the world.</p>
+        <p class="subtitle" style="margin-top:10px">Whether you’re just beginning to explore your Jewish identity or already immersed in the conversion process, you’ll find a welcoming home here among others walking the same path.</p>
         <div class="accent-line" aria-hidden="true"></div>
         <a class="btn" href="./consultation.html">Book a 1:1 call</a>
       </div>
@@ -150,7 +151,24 @@
     </div>
   </main>
 
-  <!-- Start / Quiz-like section -->
+  <!-- 1:1 Consult (moved up) -->
+  <section id="consult" class="consult section">
+    <div class="container">
+      <div class="section-title fade-in">
+        <h2>1:1 Consultation</h2>
+        <div class="subtitle">Your personalized map, in one video call</div>
+        <div class="accent-line" aria-hidden="true"></div>
+      </div>
+      <div class="container fade-in" style="max-width:800px;">
+        <p class="lead">We provide one-on-one consultations covering every stage of the conversion journey — whether you’re exploring Judaism, preparing for the Beit Din, or looking for ongoing support along the way. <strong>You’re not alone in this journey!</strong></p>
+        <div style="margin-top:26px">
+          <a class="btn" href="./consultation.html">Schedule now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Start / Quiz-like section (opcional) -->
   <section id="start" class="start section">
     <div class="container">
       <div class="fade-in">
@@ -168,7 +186,7 @@
     <div class="container">
       <div class="section-title fade-in">
         <h2>Resources & articles</h2>
-        <div class="subtitle">Learn, ask, and move forward with confidence</div>
+        <div class="subtitle">All you need to know for every step of your conversion journey — before, during, and after.</div>
         <div class="accent-line" aria-hidden="true"></div>
       </div>
 
@@ -212,9 +230,9 @@
       <div class="fade-in">
         <h2>Visit</h2>
         <div class="big" style="color: var(--primary); letter-spacing:2px; text-transform:uppercase; font-weight:300">THE SHOP</div>
-        <p><strong>Recommended books and designed prayers</strong> curated for your study and daily practice. Find beginner guides, reading lists, and materials to move forward with calm and order.</p>
-        <p>More digital resources coming soon.</p>
-        <a href="./shop.html" class="btn">Explore resources</a>
+        <p><strong>Explore our selection of meaningful books and heartfelt prayers</strong> — crafted to enrich your learning, daily rituals, and connection to Judaism.</p>
+        <p>New digital resources coming soon!</p>
+        <a href="./shop.html" class="btn">Get Inspired</a>
       </div>
       <div class="mock fade-in" aria-hidden="true">
         <img alt="Shop mock" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='400' viewBox='0 0 500 400'%3E%3Crect width='500' height='400' fill='%23eef2ff'/%3E%3Crect x='50' y='50' width='400' height='300' rx='16' fill='%23ffffff'/%3E%3Crect x='100' y='100' width='150' height='10' rx='5' fill='%231437ff'/%3E%3Ccircle cx='350' cy='120' r='30' fill='%23ffd500'/%3E%3Crect x='100' y='150' width='220' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='170' width='180' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='190' width='240' height='8' rx='4' fill='%23dbe1ff'/%3E%3Crect x='100' y='250' width='120' height='34' rx='17' fill='%231437ff'/%3E%3C/svg%3E"/>
@@ -222,31 +240,22 @@
     </div>
   </section>
 
-  <!-- 1:1 Consult -->
-  <section id="consult" class="consult section">
-    <div class="container">
-      <div class="section-title fade-in">
-        <h2>1:1 Consultation</h2>
-        <div class="subtitle">Your personalized map, in one video call</div>
-        <div class="accent-line" aria-hidden="true"></div>
-      </div>
-      <div class="container fade-in" style="max-width:800px;">
-        <p class="lead">A focused online meeting to <strong>answer questions</strong>, define <strong>first steps</strong>, and understand how the process looks across movements and in your context. Schedule at least 48 hours in advance.</p>
-        <div style="margin-top:26px">
-          <a class="btn" href="./consultation.html">Schedule now</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Instagram CTA -->
-  <section id="instagram" class="ig section">
+  <!-- Community / Social & WhatsApp -->
+  <section class="community section" id="community">
     <div class="bg"></div>
     <div class="container wrap">
-      <div class="fade-in" style="max-width:640px; margin:0 auto; text-align:center">
-        <h2>Are we connected on Instagram?</h2>
-        <p class="lead">Daily content, real conversion stories, and tips to study with focus.</p>
-        <a href="#contact" class="btn">Let's connect</a>
+      <div class="fade-in" style="text-align:center">
+        <h2>Are we connected already?</h2>
+        <p class="lead">Join our global WhatsApp community — connect with fellow converts from your country and around the world!</p>
+        <a class="btn" href="https://chat.whatsapp.com/HPhHBNdkzE5Fq4lg4Xe809" target="_blank" rel="noopener">Click here</a>
+
+        <div class="icons" style="margin-top:18px">
+          <a href="https://www.instagram.com/new_choose_new_jews/" target="_blank" rel="noopener" aria-label="Instagram">Instagram</a>
+          <a href="https://www.facebook.com/share/g/1Bve18EbS3/" target="_blank" rel="noopener" aria-label="Facebook">Facebook</a>
+          <a href="https://www.youtube.com/@NewChooseNewJews" target="_blank" rel="noopener" aria-label="YouTube">YouTube</a>
+          <a href="https://www.tiktok.com/@new.choose.new.je" target="_blank" rel="noopener" aria-label="TikTok">TikTok</a>
+          <a href="https://www.linkedin.com/in/noa-amalia-arazi-989194217/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        </div>
       </div>
     </div>
   </section>
@@ -256,7 +265,7 @@
     <div class="container">
       <div class="section-title fade-in">
         <h2>Contact</h2>
-        <div class="subtitle">Tell us where you are in your journey</div>
+        <div class="subtitle">Get in touch — we’d love to hear from you and will get back to you soon!</div>
         <div class="accent-line" aria-hidden="true"></div>
       </div>
 
