@@ -106,44 +106,43 @@
 </head>
 <body>
   <!-- Header -->
-   <header class="header" role="banner">
-  <div class="container nav">
-    <a class="brand" href="./index.html" aria-label="New Choose New Jews Home">
-      <picture>
-        <source type="image/webp" srcset="
-          ./assets/brand/ncnj-logo-horizontal-w640.webp 640w,
-          ./assets/brand/ncnj-logo-horizontal-w320.webp 320w,
-          ./assets/brand/ncnj-logo-horizontal-w160.webp 160w,
-          ./assets/brand/ncnj-logo-horizontal.webp 1024w">
-        <img
-          src="./assets/brand/ncnj-logo-horizontal.png"
-          alt="New Choose New Jews logo"
-          height="40"
-          style="height:40px;width:auto">
-      </picture>
-      <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
-    </a>
+  <header class="header" role="banner">
+    <div class="container nav">
+      <a class="brand" href="./index.html" aria-label="New Choose New Jews Home">
+        <picture>
+          <source type="image/webp" srcset="
+            ./assets/brand/ncnj-logo-horizontal-w640.webp 640w,
+            ./assets/brand/ncnj-logo-horizontal-w320.webp 320w,
+            ./assets/brand/ncnj-logo-horizontal-w160.webp 160w,
+            ./assets/brand/ncnj-logo-horizontal.webp 1024w">
+          <img
+            src="./assets/brand/ncnj-logo-horizontal.png"
+            alt="New Choose New Jews logo"
+            height="40"
+            style="height:40px;width:auto">
+        </picture>
+        <strong class="brand-title">NEW CHOOSE NEW JEWS</strong>
+      </a>
 
-    <nav class="menu" aria-label="Primary Navigation">
-  <a href="./index.html#home">Home</a>
-  <a href="./resources.html">Resources</a>
-  <a href="./about.html">About</a>
-  <a href="./shop.html">Shop</a>
-  <a href="./consultation.html">1:1 Consult</a>
-  <a href="./members.html" class="cta">Members</a>
-  <a href="./index.html#contact" class="cta">Contact</a>
-</nav>
-
-  </div>
-</header>
+      <nav class="menu" aria-label="Primary Navigation">
+        <a href="./index.html#home">Home</a>
+        <a href="./resources.html" class="active" aria-current="page">Resources</a>
+        <a href="./about.html">About</a>
+        <a href="./shop.html">Shop</a>
+        <a href="./consultation.html">1:1 Consult</a>
+        <a href="./members.html" class="cta">Members</a>
+        <a href="./index.html#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- Hero -->
   <section class="hero section">
     <div class="container hero-wrap">
       <div class="fade-in">
         <span class="kicker">Resources</span>
-        <h1>Learn, practice, and move forward — without overwhelm</h1>
-        <p class="subtitle">Curated articles, quick guides, and downloads to support your journey. Filter by topic, discover beginner‑friendly reads, and save what matters most.</p>
+        <h1>Learn, explore, and move forward on your journey — without feeling overwhelmed.</h1>
+        <p class="subtitle">Discover curated articles, handy guides, and downloadable resources to support every step of your path.</p>
         <div class="accent-line" aria-hidden="true"></div>
         <div class="pill" aria-label="Resource types">
           <span>Articles</span> • <span>Guides</span> • <span>Downloads</span>
@@ -152,12 +151,12 @@
       <aside class="hero-card fade-in" aria-label="Popular topics">
         <h3>Popular topics</h3>
         <ul>
-          <li>Conversion process basics</li>
-          <li>Shabbat & calendar</li>
-          <li>Prayer & blessings</li>
-          <li>Movements: Orthodox, Conservative, Reform</li>
-          <li>Community involvement</li>
-          <li>Mikveh & lifecycle moments</li>
+          <li>How to begin my conversion?</li>
+          <li>How to find a Jewish community?</li>
+          <li>Shabbat & holidays</li>
+          <li>Movements in Judaism</li>
+          <li>Family difficulties</li>
+          <li>Integration in the community</li>
         </ul>
       </aside>
     </div>
@@ -198,20 +197,13 @@
           </div>
         </div>
 
-        <div class="panel" style="margin-top:14px">
-          <h3>Get updates</h3>
-          <p class="subtitle" style="margin:6px 0 10px">New resources, once or twice a month.</p>
-          <form onsubmit="event.preventDefault(); alert('Thanks! You\'re subscribed.');">
-            <input type="email" placeholder="Your email" required style="width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px" />
-            <button class="btn" style="width:100%; margin-top:10px">Subscribe</button>
-          </form>
-        </div>
+        <!-- Removed the sidebar "Get updates" panel per your request -->
       </aside>
 
       <!-- Grid -->
       <div>
         <div class="grid" id="grid">
-          <!-- Example cards -->
+          <!-- Example cards (unchanged placeholders; dime si quieres que escriba 6–9 recursos reales) -->
           <article class="card fade-in" data-type="article" data-topic="process" data-level="beginner">
             <div class="thumb" aria-hidden="true"></div>
             <div class="body">
@@ -283,10 +275,10 @@
         <!-- Newsletter / downloads CTA -->
         <div class="cta-block" style="margin-top:26px">
           <h3>Want new resources in your inbox?</h3>
-          <p class="subtitle">No spam. Just helpful reading, once or twice a month.</p>
+          <p class="subtitle">Be the first one to get an update!</p>
           <form onsubmit="event.preventDefault(); alert('Thanks! You\'re subscribed.');" style="display:flex; gap:10px; justify-content:center; margin-top:8px">
             <input type="email" placeholder="Your email" required style="min-width:260px; max-width:340px; width:100%; padding:12px 14px; border:1px solid #e5e7eb; border-radius:10px" />
-            <button class="btn" type="submit">Subscribe</button>
+            <button class="btn" type="submit">Get updates</button>
           </form>
         </div>
       </div>
